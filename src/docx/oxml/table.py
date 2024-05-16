@@ -94,7 +94,9 @@ class CT_Row(BaseOxmlElement):
             # -- We're not there yet, skip forward the number of layout-grid cells this cell
             # -- occupies.
             remaining_offset -= tc.grid_span
-
+        # 16/05: Modified to temporarily return without raising error.
+        tc.vMerge = ST_Merge.RESTART
+        return tc
         raise ValueError(f"no `tc` element at grid_offset={grid_offset}")
 
     @property
